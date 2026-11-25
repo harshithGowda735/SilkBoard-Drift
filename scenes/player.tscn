@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_player"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nearmiss"]
+size = Vector2(44, 40)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_horn"]
+mix_rate = 22050.0
+buffer_length = 0.25
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_player")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="NearMissZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NearMissZone"]
+shape = SubResource("RectangleShape2D_nearmiss")
+
+[node name="HornPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_horn")
