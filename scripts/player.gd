@@ -30,7 +30,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	position.x = clampf(position.x, 54.0, 426.0)
 	position.y = 228.0
-	z_index = int(global_position.y)
 
 	if Input.is_action_just_pressed("horn"):
 		_play_horn()
